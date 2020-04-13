@@ -67,7 +67,7 @@ def hook_makeOutline(VO, blines):
         if classMatch:
             lev = 1
             head = classMatch.group(0)
-        else if methodMatch:
+        elif methodMatch:
             lev = 2
             head = methodMatch.group(2)
         # delete all html tags
