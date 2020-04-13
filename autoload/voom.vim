@@ -972,6 +972,8 @@ func! voom#TreeConfigWin() "{{{2
     setl cul nocuc nowrap nolist
     "setl winfixheight
     setl winfixwidth
+    setl nonu
+    setl norelativenumber
     let w:voom_tree = 'VOoM'
 endfunc
 
