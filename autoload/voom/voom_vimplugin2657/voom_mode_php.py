@@ -7,16 +7,34 @@
 
 """
 VOoM markup mode for PHP headings.
-See |voom-mode-html|,  ../../../doc/voom.txt#*voom-mode-html*
+See |voom-mode-php|,  ../../../doc/voom.txt#*voom-mode-php*
 
-<h1>headline level 1</h1>
-some text
- <h2> headline level 2 </h2>
-more text
- <H3  ALIGN="CENTER"> headline level 3 </H3>
- <  h4 >    headline level 4       </H4    >
-  some text <h4> <font color=red> headline 5 </font> </H4> </td></div>
-     etc.
+trait ApiTestTrait
+{
+    public function assertApiResponse(Array $actualData)
+    {
+        $this->assertApiSuccess();
+
+        $response = json_decode($this->response->getContent(), true);
+        $responseData = $response['data'];
+
+        $this->assertNotEmpty($responseData['id']);
+        $this->assertModelData($actualData, $responseData);
+    }
+
+    public function assertApiSuccess()
+    {
+        $this->assertResponseOk();
+        $this->seeJson(['success' => true]);
+    }
+
+    public function assertModelData(Array $actualData, Array $expectedData)
+    {
+        foreach ($actualData as $key => $value) {
+            $this->assertEquals($actualData[$key], $expectedData[$key]);
+        }
+    }
+}
 """
 
 import sys
