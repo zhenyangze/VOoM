@@ -996,6 +996,11 @@ func! voom#TreeConfigFT(body) "{{{2
         syn match Statement /^[^|]\+|\zs\%(def\s\|class\s\)/
         syn match Define /^[^|]\+|\zs@/
         syn match Comment /#.*/ contains=Todo
+    elseif FT==#'php'
+        syn match Statement /^[^|]\+|\zs\%(function\s\|class\s\)/
+        syn match Define /^[^|]\+|\zs@/
+        syn match Comment /".*/ contains=Todo
+        syn match Comment /^[^|]\+|\zs#.*/ contains=Todo
     elseif FT==#'vim'
         syn match Statement /^[^|]\+|\zs\%(fu\%[nction]\>\|def\s\|class\s\)/
         syn match Comment /".*/ contains=Todo

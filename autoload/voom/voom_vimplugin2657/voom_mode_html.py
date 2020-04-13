@@ -59,7 +59,10 @@ def hook_newHeadline(VO, level, blnum, tlnum):
     bodyLines is list of lines to insert in Body buffer.
     """
     tree_head = 'NewHeadline'
-    bodyLines = ['<h%s>%s</h%s>' %(level, tree_head, level), '']
+    if level == 1:
+        bodyLines = ["class %s\n{\n}" %(tree_head), '']
+    else:
+        bodyLines = ["function %s () {\n}" %(tree_head), '']
     return (tree_head, bodyLines)
 
 
